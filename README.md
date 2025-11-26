@@ -1,2 +1,2 @@
-# PhD_analysis
-Data analysis workflow for the PhD project in marine connectivity on scallops
+# Workflow to identify and characterise chromosomal inversions in P. maximus (King scallop)
+
