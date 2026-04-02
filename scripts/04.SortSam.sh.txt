@@ -1,0 +1,71 @@
+#!/bin/sh
+# ==============================================================================
+# Script:       04.SortSam.sh
+# Description:  Sort mapped BAM files by coordinate using Picard SortSam.
+#
+# Input:        Mapped BAM files from 03.bwa-mem.sh
+# Output:       Coordinate-sorted BAM files.
+#==============================================================================
+
+# ------------------------------------------------------------------------------
+# SGE array job configuration
+# ------------------------------------------------------------------------------
+#$ -N SortSam
+#$ -cwd
+#$ -l h_rt=16:00:00
+#$ -l h_rss=8G
+#$ -pe sharedmem 4
+#$ -t 1-168
+#$ -o o_files
+#$ -e e_files
+
+# ------------------------------------------------------------------------------
+# Load required modules
+# ------------------------------------------------------------------------------
+
+. /etc/profile.d/modules.sh
+
+module load java
+
+# ------------------------------------------------------------------------------
+# Path configuration
+# ------------------------------------------------------------------------------
+
+TARGET_DIR=/simone/pmax2023/out/03mapped_bams
+OUTPUT_DIR=/simone/pmax2023/out/04sorted_bams
+
+# Scratch space for Picard temporary files
+SCRATCH=/scratch/sdaless
+
+# ------------------------------------------------------------------------------
+# Parse sample for this array task
+# ------------------------------------------------------------------------------
+
+BAM=$(ls -1 "${TARGET_DIR}"/*_mapped.bam)
+THIS_BAM=$(echo "${BAM}" | sed -n "${SGE_TASK_ID}p")
+BASE=$(basename "${THIS_BAM}" .bam)
+
+echo "=================================================="
+echo "Task ID:    ${SGE_TASK_ID}"
+echo "Input BAM:  ${THIS_BAM}"
+echo "Host:       ${HOSTNAME}"
+echo "Start time: $(date)"
+echo "=================================================="
+
+# ------------------------------------------------------------------------------
+# Sort BAM by coordinate
+# ------------------------------------------------------------------------------
+# Key parameters:
+#   SORT_ORDER      Coordinate sort required for indexing and most downstream tools
+#   TMP_DIR         Redirect temp files to scratch to avoid filling home quota
+
+java -Xmx16g -jar /software/picard/picard.jar SortSam \
+    I="${THIS_BAM}" \
+    O="${OUTPUT_DIR}/${BASE}_sorted.bam" \
+    SORT_ORDER=coordinate \
+    TMP_DIR="${SCRATCH}"
+
+echo "=================================================="
+echo "Finished: ${BASE}"
+echo "End time: $(date)"
+echo "=================================================="
