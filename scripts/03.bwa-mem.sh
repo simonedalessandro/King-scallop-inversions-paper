@@ -37,7 +37,7 @@ TARGET_DIR=/simone/pmax2023/out/02cutadapt
 OUTPUT_DIR=/simone/pmax2023/out/03mapped_bams
 SAMPLE_SHEET="/simone/pmax2023/out/file_lists/01.bwa-mem.sample.list.txt"
 
-REFERENCE="/simone/reference/GCA_902652985.1_xPecMax1.1_genomic.fna"
+REFERENCE="/simone/reference/Pmax/GCA_902652985.1_xPecMax1.1_genomic.fna"
 
 # ------------------------------------------------------------------------------
 # Parse sample information for this array task
