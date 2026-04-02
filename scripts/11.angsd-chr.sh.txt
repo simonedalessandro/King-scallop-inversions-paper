@@ -1,0 +1,102 @@
+#!/bin/sh
+# ==============================================================================
+# Script:       11a.angsd-chr.sh
+# Description:  Compute genotype likelihoods (GLs) and allele frequencies per chromosome using ANGSD
+# Input:    List of deduplicated BAM files (one path per line)
+#                List of scaffold/chromosome IDs (one ID per line)
+# Output: Per-chromosome beagle GL files, MAF, and Plink tped/tfam files
+## ==============================================================================
+
+# ------------------------------------------------------------------------------
+# SGE array job configuration
+# ------------------------------------------------------------------------------
+#$ -N angsd_chr
+#$ -cwd
+#$ -l h_rt=48:00:00
+#$ -l h_rss=16G
+#$ -t 1-19
+#$ -pe sharedmem 4
+#$ -o o_files
+#$ -e e_files
+
+# ------------------------------------------------------------------------------
+# Load required modules
+# ------------------------------------------------------------------------------
+
+. /etc/profile.d/modules.sh
+
+module load java
+
+# ------------------------------------------------------------------------------
+# Path configuration
+# ------------------------------------------------------------------------------
+
+ANGSD=/software/angsd/angsd/angsd
+
+BAM_LIST=/simone/pmax2023/out/file_lists/angsd_bams_list.txt
+OUTPUT_DIR=/simone/pmax2023/out/10.angsd
+REFERENCE=/simone/reference/Pmax/GCA_902652985.1_xPecMax1.1_genomic.fna
+SCAFF_LIST=/simone/pmax2023/out/file_lists/scaff_IDs.txt
+
+# ------------------------------------------------------------------------------
+# Parse chromosome for this array task
+# ------------------------------------------------------------------------------
+
+SCAFF=$(sed -n "${SGE_TASK_ID}p" "${SCAFF_LIST}" | awk '{print $1}')
+
+echo "=================================================="
+echo "Task ID:     ${SGE_TASK_ID}"
+echo "Chromosome:  ${SCAFF}"
+echo "Host:        ${HOSTNAME}"
+echo "Start time:  $(date)"
+echo "=================================================="
+
+# ------------------------------------------------------------------------------
+# Run ANGSD
+# ------------------------------------------------------------------------------
+# Key parameters:
+#   -GL 2           GATK genotype likelihood model
+#   -doGlf 2        Output beagle format GLs
+#   -doMajorMinor 4 Infer major/minor allele from reference
+#   -doMaf 1        Estimate allele frequencies
+#   -doPlink 2      Output tped/tfam for PLINK
+#   -doGeno 2 / -doPost 1  Genotype calling using posterior probabilities
+#   -C 50           Cap base alignment quality (BAQ) adjustment
+#   -baq 1          Enable per-base alignment quality recalculation
+#   -minInd 134     Require data in >= 134 of 168 individuals (~80%)
+#   -setMinDepth 504 / -setMaxDepth 2016  Global depth filters (3x–12x * 168)
+#   -P 4            Threads (matches -pe sharedmem 4)
+
+"${ANGSD}" \
+    -b "${BAM_LIST}" \
+    -ref "${REFERENCE}" \
+    -r "${SCAFF}" \
+    -out "${OUTPUT_DIR}/${SCAFF}" \
+    -uniqueOnly 1 \
+    -remove_bads 1 \
+    -only_proper_pairs 1 \
+    -trim 0 \
+    -C 50 \
+    -baq 1 \
+    -minMapQ 30 \
+    -minQ 30 \
+    -doCounts 1 \
+    -GL 2 \
+    -doGlf 2 \
+    -doMajorMinor 4 \
+    -doMaf 1 \
+    -rmTriallelic 1e-6 \
+    -SNP_pval 1e-6 \
+    -doGeno 2 \
+    -doPost 1 \
+    -doPlink 2 \
+    -P 4 \
+    -setMinDepth 504 \
+    -setMaxDepth 2016 \
+    -minInd 134 \
+    -minMaf 0.05
+
+echo "=================================================="
+echo "Finished chromosome: ${SCAFF}"
+echo "End time:            $(date)"
+echo "=================================================="
