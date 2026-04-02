@@ -31,8 +31,8 @@ module load samtools/1.9
 # Path configuration
 # ------------------------------------------------------------------------------
 
-INPUT_DIR="/simone/pmax2023/out/06.rmdup_bams/10x"
-OUTPUT_DIR="/simone/pmax2023/out/06.rmdup_bams/06x"
+INPUT_DIR="/simone/pmax2023/out/06rmdup_bams/10x"
+OUTPUT_DIR="/simone/pmax2023/out/06rmdup_bams/06x"
 
 # Tab-separated file: sample_name  proportion_to_downsample
 # Proportion computed as: target_depth / observed_depth (e.g. 6 / 10.4 = 0.577)
