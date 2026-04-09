@@ -1,6 +1,6 @@
 #!/bin/sh
 # ==============================================================================
-# Script:       11a.angsd-chr.sh
+# Script:       11.angsd-chr.sh
 # Description:  Compute genotype likelihoods (GLs) and allele frequencies per chromosome using ANGSD
 # Input:    List of deduplicated BAM files (one path per line)
 #                List of scaffold/chromosome IDs (one ID per line)
