@@ -1,0 +1,133 @@
+#!/bin/sh
+# ==============================================================================
+# Script:       11b.merge_ANGSD.sh
+# Description:  Merge per-chromosome ANGSD output files into a single genome-wide
+#               dataset. Produces:
+#                 1. A merged Beagle genotype likelihood file (all autosomes)
+#                 2. Per-chromosome binary PLINK files (.bed/.bim/.fam)
+#                 3. A single merged binary PLINK file across all 19 autosomes
+#
+# Input:        Per-chromosome Beagle GL files (*1.beagle.gz) and PLINK
+#               tped/tfam files (LR736838.1–LR736856.1) from 11.angsd-chr.sh
+#
+# Note:
+# This script is run twice:
+#
+#    Step 1. full 168-sample dataset used for initial individual-level QC (12a/b.het_miss) and
+#                 pairwise relatedness estimation (13a/b.relatedness).
+#                 8 individuals identified as related are flagged for removal.
+#
+#      Step 2. cleaned 160-sample dataset re-run after removing the 8 flagged individuals 
+#                 from the BAM list and re-running ANGSD (11.angsd-chr.sh). 
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Load required modules
+# ------------------------------------------------------------------------------
+
+. /etc/profile.d/modules.sh
+
+module load plink/1.90b7.2
+
+# ------------------------------------------------------------------------------
+# Path configuration
+# ------------------------------------------------------------------------------
+
+ANGSD_DIR=/simone/pmax2023/out/10.angsd
+
+cd "${ANGSD_DIR}"
+
+echo "=================================================="
+echo "Working directory: $(pwd)"
+echo "Start time:        $(date)"
+echo "=================================================="
+
+# ==============================================================================
+# PART 1: Merge per-chromosome Beagle genotype likelihood files
+# ==============================================================================
+
+echo ""
+echo "[$(date)] === Merging Beagle GL files ==="
+
+# Decompress all per-chromosome Beagle files
+gunzip *1.beagle.gz
+
+# Concatenate all chromosomes into one Beagle file, retaining the header only from the first file
+# Update output prefix to reflect sample count for this pass:
+#   Pass 1: Pmax_168_merged_chr
+#   Pass 2 (post-QC ): Pmax_160_merged_chr
+OUT_PREFIX="Pmax_160_merged_chr"
+
+awk 'FNR==1 && NR!=1{next;}{print}' *.beagle > "${OUT_PREFIX}.beagle"
+
+echo "[$(date)] Merged Beagle written: ${OUT_PREFIX}.beagle"
+echo "[$(date)] SNP count (excl. header): $(( $(wc -l < ${OUT_PREFIX}.beagle) - 1 ))"
+
+# Re-compress individual chromosome Beagle files to save disk space
+gzip *.beagle
+
+echo "[$(date)] Per-chromosome Beagle files re-compressed"
+
+# ==============================================================================
+# PART 2: Convert per-chromosome tped/tfam to binary PLINK format
+# ==============================================================================
+# Chromosomes span LR736838.1 (chr 1) to LR736856.1 (chr 19).
+
+echo ""
+echo "[$(date)] === Converting tped/tfam to binary PLINK format ==="
+
+for chr in {838..856}; do
+
+    TFILE="LR736${chr}.1"
+
+    echo "[$(date)] Converting: ${TFILE}"
+
+    plink \
+        --tfile  "${TFILE}" \
+        --allow-extra-chr \
+        --make-bed \
+        --out    "${TFILE}"
+
+done
+
+echo "[$(date)] All chromosomes converted to binary PLINK format"
+
+# ==============================================================================
+# PART 3: Merge all chromosomes into a single binary PLINK dataset
+# ==============================================================================
+# PLINK --merge-list requires a text file listing all datasets to merge EXCEPT
+# the first, which is passed via --bfile. Here LR736838.1 (chr 1) is used as
+# the base file and chromosomes 2–19 are listed in merge_list.txt.
+
+echo ""
+echo "[$(date)] === Merging binary PLINK files across all chromosomes ==="
+
+# Create merge list (chromosomes 2–19; chr 1 supplied separately via --bfile)
+printf '%s\n' LR736{839..856}.1 > merge_list.txt
+
+echo "[$(date)] Merge list written: merge_list.txt"
+echo "[$(date)] Chromosomes in merge list: $(wc -l < merge_list.txt)"
+
+# Merge all chromosomes into a single genome-wide binary PLINK dataset
+plink \
+    --bfile     LR736838.1 \
+    --merge-list merge_list.txt \
+    --make-bed \
+    --allow-extra-chr \
+    --out        "${OUT_PREFIX}"
+
+echo ""
+echo "[$(date)] === Summary ==="
+echo "[$(date)] Total variants in merged dataset : $(wc -l < ${OUT_PREFIX}.bim)"
+echo "[$(date)] Total individuals                : $(wc -l < ${OUT_PREFIX}.fam)"
+echo "[$(date)] Output prefix                    : ${ANGSD_DIR}/${OUT_PREFIX}"
+echo ""
+echo "[$(date)] Done."
+echo ""
+echo "Next step:"
+echo "  Step 1: Run 12a.het_miss.sh on Pmax_168_merged_chr for individual-level QC,"
+echo "          then 13a.relatedness.sh for LD pruning and pairwise relatedness estimation."
+echo "  Step 2: Pmax_160_merged_chr is the clean dataset for downstream population analyses."
+echo "=================================================="
+echo "End time: $(date)"
+echo "=================================================="
