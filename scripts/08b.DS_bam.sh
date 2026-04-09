@@ -1,6 +1,6 @@
 #!/bin/sh
 # ==============================================================================
-# Script:       08.DS.bam.sh
+# Script:       08b.DS.bam.sh
 # Description:  Downsample high-coverage (10x) BAM files to uniform 6x coverage
 # using SAMtools. The downsampling proportion per sample is precomputed and provided via a # coverage proportion file.
 #
