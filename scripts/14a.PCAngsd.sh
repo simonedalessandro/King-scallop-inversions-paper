@@ -39,7 +39,7 @@ echo "Start time:        $(date)"
 echo "=================================================="
 
 # ==============================================================================
-# STEP 1: Genome-wide PCA (merged all-chromosome Beagle file)
+# PART 1: Genome-wide PCA (merged all-chromosome Beagle file)
 # ==============================================================================
 
 echo ""
@@ -53,7 +53,7 @@ pcangsd \
 echo "[$(date)] Genome-wide covariance matrix written: ${OUT_DIR}/Pmax_160_merged_chr.cov"
 
 # ==============================================================================
-# STEP 2: Per-chromosome PCA (one Beagle file per chromosome)
+# PART 2: Per-chromosome PCA (one Beagle file per chromosome)
 # ==============================================================================
 # Chromosomes span LR736838.1 (chr 1) to LR736856.1 (chr 19)
 
@@ -78,7 +78,7 @@ echo ""
 echo "[$(date)] Done."
 echo "Output directory: ${OUT_DIR}"
 echo ""
-echo "Next step:"
+echo "Next PART:"
 echo "  Download ${OUT_DIR}/*.cov to local machine and run 14b.PCAngsd.R"
 echo "  for genome-wide and per-chromosome PCA plots."
 echo "=================================================="
