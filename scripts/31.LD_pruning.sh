@@ -36,7 +36,7 @@
 
 . /etc/profile.d/modules.sh
 
-module load plink/1.90b7.2
+module load plink/1.9
 module load anaconda
 
 # ------------------------------------------------------------------------------
