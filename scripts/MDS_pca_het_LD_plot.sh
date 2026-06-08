@@ -71,7 +71,7 @@ mds  <- read.table("/simone/pmax2023/out/21.MDS_pca_het_LD/mds_matrix.txt", head
 info <- read.table("/simone/pmax2023/out/21.MDS_pca_het_LD/inversion_info.txt", header = TRUE)
 
 # ── Load sample metadata ───────────────────────────────────────────────────────
-pop_info <- read.table("/simone/pmax2023/out/21.MDS_pca_het_LD/local_pca/pop_info_rm8.txt", header = TRUE) %>%
+pop_info <- read.table("/simone/pmax2023/out/file_lists/pop_info_rm8.txt", header = TRUE) %>%
   rename(id = Sample, location = Location) %>%
   select(id, location)
 
@@ -122,7 +122,7 @@ names(plots_mds) <- info$LGC
 local_pca <- function(LGC) {
 
   cov_path <- file.path(
-    "/simone/pmax2023/out/21.MDS_pca_het_LD/local_pca",
+    "/simone/pmax2023/out/20.lostruct/inversions/local_pca",
     paste0(LGC, ".cov"))
 
   cov <- as.matrix(read.table(cov_path))
@@ -137,7 +137,7 @@ local_pca <- function(LGC) {
 
   # Load k-means cluster assignments from 21b.local_pca.R
   geno_path    <- file.path(
-    "/simone/pmax2023/out/21.MDS_pca_het_LD/local_pca",
+    "/simone/pmax2023/out/20.lostruct/inversions/local_pca",
     paste0(LGC, "_geno.txt"))
   cluster_info <- read.table(geno_path, header = TRUE) %>%
     rename(id = id_inv, geno = cluster_inv)
@@ -173,7 +173,7 @@ het_plot <- function(LGC) {
 
   # Load cluster assignments
   geno_path    <- file.path(
-    "/simone/pmax2023/out/21.MDS_pca_het_LD/local_pca",
+    "/simone/pmax2023/out/20.lostruct/inversions/local_pca",
     paste0(LGC, "_geno.txt"))
   cluster_info <- read.table(geno_path, header = TRUE) %>%
     rename(id = id_inv, geno = cluster_inv)
