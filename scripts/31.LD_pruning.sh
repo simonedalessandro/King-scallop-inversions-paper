@@ -46,7 +46,7 @@ module load anaconda
 ANGSD_DIR=/simone/pmax2023/out/22.no_inversion
 OUT_DIR=/simone/pmax2023/out/22.no_inversion
 PRUNE_DIR=${OUT_DIR}/pruned
-NGSRELATE=/software/ngsRelate/ngsRelate
+NGSRELATE=/simone/pmax2023/software/ngsRelate/ngsRelate
 
 mkdir -p "${PRUNE_DIR}"
 
