@@ -32,12 +32,12 @@ Software/module versions as referenced in the pipeline scripts:
 | BWA | 0.7.17 / 0.7.18 |
 | SAMtools | 1.9 / 1.10 / 1.20 |
 | Picard (SortSam, AddOrReplaceReadGroups, MarkDuplicates) | via module system |
-| ANGSD | (locally compiled build; see script paths) |
-| PLINK | 1.9 / 1.90b7.2 / 2.0.0 |
+| ANGSD | 0.940 |
+| PLINK | 1.9 / 2.0.0 |
 | BCFtools | 1.16 / 1.20 |
 | BEDTools | 2.29.2 / 2.31.1 |
 | VCFtools | 0.1.16 |
-| ngsRelate | as called in relatedness step |
+| ngsRelate | 2 |
 | seqtk | 1.4-r122 |
 | SRA Toolkit | 2.10.8 |
 | R | 4.5 / 4.5.0 |
