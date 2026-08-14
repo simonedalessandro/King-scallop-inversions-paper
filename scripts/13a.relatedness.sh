@@ -38,8 +38,8 @@ module /plink/1.90b7.2
 # Path configuration
 # ------------------------------------------------------------------------------
 
-ANGSD_DIR=/simone/pmax2023/out/10.angsd
-OUT_DIR=/simone/pmax2023/out/11.relatedness
+ANGSD_DIR=/anon_user/pmax2023/out/10.angsd
+OUT_DIR=/anon_user/pmax2023/out/11.relatedness
 
 PREFIX=${ANGSD_DIR}/Pmax_168_merged_chr
 BEAGLE=${ANGSD_DIR}/Pmax_168_merged_chr.beagle.gz

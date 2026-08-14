@@ -30,9 +30,9 @@ module load samtools/1.9
 # Path configuration
 # ------------------------------------------------------------------------------
 
-ANGSD_DIR=/simone/pmax2023/out/10.angsd
-VCF_DIR=/simone/pmax2023/out/20.lostruct/vcf
-OUT_DIR=/simone/pmax2023/out/20.lostruct
+ANGSD_DIR=/anon_user/pmax2023/out/10.angsd
+VCF_DIR=/anon_user/pmax2023/out/20.lostruct/vcf
+OUT_DIR=/anon_user/pmax2023/out/20.lostruct
 
 mkdir -p "${VCF_DIR}" "${OUT_DIR}"
 

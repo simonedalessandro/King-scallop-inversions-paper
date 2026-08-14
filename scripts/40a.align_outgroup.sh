@@ -32,9 +32,9 @@ module load samtools/1.10
 # ------------------------------------------------------------------------------
 # Paths / parameters
 # ------------------------------------------------------------------------------
-RAW_DIR=/simone/pmax2023/raw/outgroup
-BAM_DIR=/simone/pmax2023/out/30.ancestral/outgroup/bam
-REFERENCE=/simone/pmax2023/reference/GCA_902652985.1_xPecMax1.1_genomic.fna
+RAW_DIR=/anon_user/pmax2023/raw/outgroup
+BAM_DIR=/anon_user/pmax2023/out/30.ancestral/outgroup/bam
+REFERENCE=/anon_user/pmax2023/reference/GCA_902652985.1_xPecMax1.1_genomic.fna
 THREADS=6
 
 # 15 outgroup accessions (10 M. yessoensis + 5 P. magellanicus)

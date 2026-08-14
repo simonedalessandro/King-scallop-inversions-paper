@@ -27,8 +27,8 @@
 # Paths / parameters  — edit to match your layout
 # ------------------------------------------------------------------------------
 ANGSD=angsd                                              
-BAM_DIR=/simone/pmax2023/out/30.ancestral/outgroup/bam
-OUT_DIR=/simone/pmax2023/out/30.ancestral/outgroup
+BAM_DIR=/anon_user/pmax2023/out/30.ancestral/outgroup/bam
+OUT_DIR=/anon_user/pmax2023/out/30.ancestral/outgroup
 THREADS=4
 
 echo "Building consensus on ${HOSTNAME}"

@@ -19,7 +19,7 @@
 # Path configuration
 # ------------------------------------------------------------------------------
 
-BASE=/simone/pmax2023/out
+BASE=/anon_user/pmax2023/out
 GO="${BASE}/40.GO"
 
 GFF="${GO}/GCF_902652985.1_xPecMax1.1_genomic.gff.gz"

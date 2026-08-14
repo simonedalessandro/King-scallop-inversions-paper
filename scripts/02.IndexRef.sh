@@ -30,7 +30,7 @@ module load samtools/1.20
 # Path configuration
 # ------------------------------------------------------------------------------
 
-REFERENCE="/simone/reference/Pmax/GCA_902652985.1_xPecMax1.1_genomic.fna"
+REFERENCE="/anon_user/reference/Pmax/GCA_902652985.1_xPecMax1.1_genomic.fna"
 
 # ------------------------------------------------------------------------------
 # Index reference genome

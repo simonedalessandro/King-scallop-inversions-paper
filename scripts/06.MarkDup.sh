@@ -33,10 +33,10 @@ module load samtools/1.20
 # Path configuration
 # ------------------------------------------------------------------------------
  
-INPUT_DIR=/simone/pmax2023/out/05group_bams
-OUTPUT_DIR=/simone/pmax2023/out/06rmdup_bams
-METRICS_DIR=/simone/pmax2023/out/06rmdup_bams/metrics
-STATS_DIR=/simone/pmax2023/out/06rmdup_bams/stats
+INPUT_DIR=/anon_user/pmax2023/out/05group_bams
+OUTPUT_DIR=/anon_user/pmax2023/out/06rmdup_bams
+METRICS_DIR=/anon_user/pmax2023/out/06rmdup_bams/metrics
+STATS_DIR=/anon_user/pmax2023/out/06rmdup_bams/stats
  
 # Job-specific scratch directory to avoid collisions between array tasks
 SCRATCH=/scratch/sdaless/picard_tmp/${JOB_ID}_${SGE_TASK_ID}

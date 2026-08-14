@@ -30,8 +30,8 @@ module load java
 # Path configuration
 # ------------------------------------------------------------------------------
 
-INPUT_DIR=/simone/pmax2023/out/04sorted_bams
-OUTPUT_DIR=/simone/pmax2023/out/05group_bams
+INPUT_DIR=/anon_user/pmax2023/out/04sorted_bams
+OUTPUT_DIR=/anon_user/pmax2023/out/05group_bams
 
 # Scratch space for Picard temporary files
 SCRATCH=/scratch/sdaless

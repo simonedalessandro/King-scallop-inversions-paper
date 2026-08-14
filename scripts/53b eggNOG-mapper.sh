@@ -45,7 +45,7 @@ module load seqtk/1.4-r122
 # Path configuration
 # ------------------------------------------------------------------------------
 
-BASE=/simone/pmax2023/out
+BASE=/anon_user/pmax2023/out
 GO="${BASE}/40.GO"
 MAPFILE="${BASE}/file_lists/chrom_inversion_list.txt"
 
@@ -54,7 +54,7 @@ EMAP="${GO}/eggNOG-mapper"
 
 PROT="${GO}/GCF_902652985.1_xPecMax1.1_protein.faa.gz"
 G2P="${EMAP}/GeneID2protein.tsv"
-DBDIR=/simone/software/eggnog-db          # eggNOG database directory
+DBDIR=/anon_user/software/eggnog-db          # eggNOG database directory
 
 CPU=${NSLOTS:-16}                      
 

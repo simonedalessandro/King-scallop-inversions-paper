@@ -35,8 +35,8 @@ module load samtools/1.10
 # Path configuration
 # ------------------------------------------------------------------------------
 
-TARGET_DIR=/simone/pmax2023/out/06rmdup_bams
-OUTPUT_DIR=/simone/pmax2023/out/07coverage
+TARGET_DIR=/anon_user/pmax2023/out/06rmdup_bams
+OUTPUT_DIR=/anon_user/pmax2023/out/07coverage
 
 mkdir -p "${OUTPUT_DIR}"
 

@@ -67,11 +67,11 @@ col_palette <- c(
 )
 
 # ── Load MDS matrix and inversion metadata ─────────────────────────────────────
-mds  <- read.table("/simone/pmax2023/out/21.MDS_pca_het_LD/mds_matrix.txt", header = TRUE)
-info <- read.table("/simone/pmax2023/out/21.MDS_pca_het_LD/inversion_info.txt", header = TRUE)
+mds  <- read.table("/anon_user/pmax2023/out/21.MDS_pca_het_LD/mds_matrix.txt", header = TRUE)
+info <- read.table("/anon_user/pmax2023/out/21.MDS_pca_het_LD/inversion_info.txt", header = TRUE)
 
 # ── Load sample metadata ───────────────────────────────────────────────────────
-pop_info <- read.table("/simone/pmax2023/out/file_lists/pop_info_rm8.txt", header = TRUE) %>%
+pop_info <- read.table("/anon_user/pmax2023/out/file_lists/pop_info_rm8.txt", header = TRUE) %>%
   rename(id = Sample, location = Location) %>%
   select(id, location)
 
@@ -122,7 +122,7 @@ names(plots_mds) <- info$LGC
 local_pca <- function(LGC) {
 
   cov_path <- file.path(
-    "/simone/pmax2023/out/20.lostruct/inversions/local_pca",
+    "/anon_user/pmax2023/out/20.lostruct/inversions/local_pca",
     paste0(LGC, ".cov"))
 
   cov <- as.matrix(read.table(cov_path))
@@ -137,7 +137,7 @@ local_pca <- function(LGC) {
 
   # Load k-means cluster assignments from 21b.local_pca.R
   geno_path    <- file.path(
-    "/simone/pmax2023/out/20.lostruct/inversions/local_pca",
+    "/anon_user/pmax2023/out/20.lostruct/inversions/local_pca",
     paste0(LGC, "_geno.txt"))
   cluster_info <- read.table(geno_path, header = TRUE) %>%
     rename(id = id_inv, geno = cluster_inv)
@@ -173,14 +173,14 @@ het_plot <- function(LGC) {
 
   # Load cluster assignments
   geno_path    <- file.path(
-    "/simone/pmax2023/out/20.lostruct/inversions/local_pca",
+    "/anon_user/pmax2023/out/20.lostruct/inversions/local_pca",
     paste0(LGC, "_geno.txt"))
   cluster_info <- read.table(geno_path, header = TRUE) %>%
     rename(id = id_inv, geno = cluster_inv)
 
   # Load heterozygosity output from 22.het.sh and compute p_HET
   het_path <- file.path(
-    "/simone/pmax2023/out/21.MDS_pca_het_LD/het",
+    "/anon_user/pmax2023/out/21.MDS_pca_het_LD/het",
     paste0(LGC, ".het"))
   het <- read.table(het_path, header = TRUE) %>%
     mutate(O_HET = N_SITES - `O.HOM.`,
@@ -220,7 +220,7 @@ ld_plot <- function(LGC) {
 
   # Load LD for all individuals
   ld_path <- file.path(
-    "/simone/pmax2023/out/21.MDS_pca_het_LD/LD",
+    "/anon_user/pmax2023/out/21.MDS_pca_het_LD/LD",
     paste0(LGC, ".ld"))
   ld <- read.table(ld_path, header = TRUE)
 
@@ -231,7 +231,7 @@ ld_plot <- function(LGC) {
 
   # Load LD for AA homozygous cluster
   ldAA_path <- file.path(
-    "/simone/pmax2023/out/21.MDS_pca_het_LD/LD",
+    "/anon_user/pmax2023/out/21.MDS_pca_het_LD/LD",
     paste0(LGC, ".AA.ld"))
   ld_AA <- read.table(ldAA_path, header = TRUE)
 
@@ -273,7 +273,7 @@ save_inversion_fig <- function(LGC) {
       title = LGC,
       theme = theme(plot.title = element_text(size = 18)))
 
-  fig_dir  <- "/simone/pmax2023/out/21.MDS_pca_het_LD/figures"
+  fig_dir  <- "/anon_user/pmax2023/out/21.MDS_pca_het_LD/figures"
   png_path <- file.path(fig_dir, paste0(LGC, ".png"))
   pdf_path <- file.path(fig_dir, paste0(LGC, ".pdf"))
 

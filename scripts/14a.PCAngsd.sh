@@ -28,8 +28,8 @@ source activate pcangsd
 # Path configuration
 # ------------------------------------------------------------------------------
 
-ANGSD_DIR=/simone/pmax2023/out/10.angsd
-OUT_DIR=/simone/pmax2023/out/12.pcangsd
+ANGSD_DIR=/anon_user/pmax2023/out/10.angsd
+OUT_DIR=/anon_user/pmax2023/out/12.pcangsd
 
 mkdir -p "${OUTPUT_DIR}"
 

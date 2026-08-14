@@ -32,10 +32,10 @@ library(tidyverse)
 options(datatable.fread.input.cmd.message = FALSE)
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
-BCF_FILE  <- "/simone/pmax2023/out/20.lostruct/Pmax_160_merged_sorted_chr.bcf"
-GENO_FILE <- "/simone/pmax2023/out/20.lostruct/Pmax_160_merged_sorted_chr.012"
-OUT_DIR   <- "/simone/pmax2023/out/20.lostruct/"
-FIG_DIR   <- "/simone/pmax2023/out/20.lostruct/figures/"
+BCF_FILE  <- "/anon_user/pmax2023/out/20.lostruct/Pmax_160_merged_sorted_chr.bcf"
+GENO_FILE <- "/anon_user/pmax2023/out/20.lostruct/Pmax_160_merged_sorted_chr.012"
+OUT_DIR   <- "/anon_user/pmax2023/out/20.lostruct/"
+FIG_DIR   <- "/anon_user/pmax2023/out/20.lostruct/figures/"
 
 dir.create(FIG_DIR, showWarnings = FALSE, recursive = TRUE)
 

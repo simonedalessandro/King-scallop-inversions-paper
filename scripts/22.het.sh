@@ -36,9 +36,9 @@ module load vcftools/0.1.16
 # Path configuration
 # ------------------------------------------------------------------------------
 
-INPUT_DIR=/simone/pmax2023/out/20.lostruct/inversions
-OUT_DIR=/simone/pmax2023/out/21.MDS_pca_het_LD/het
-REGION_LIST=/simone/pmax2023/out/file_lists/putative_inversions_list.txt
+INPUT_DIR=/anon_user/pmax2023/out/20.lostruct/inversions
+OUT_DIR=/anon_user/pmax2023/out/21.MDS_pca_het_LD/het
+REGION_LIST=/anon_user/pmax2023/out/file_lists/putative_inversions_list.txt
 
 mkdir -p "${OUT_DIR}"
 

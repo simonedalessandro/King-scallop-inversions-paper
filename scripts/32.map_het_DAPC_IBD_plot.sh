@@ -40,7 +40,7 @@
 # Path configuration
 # ------------------------------------------------------------------------------
 
-BASE_DIR=/simone/pmax2023/out/23.het_DAPC_IBD
+BASE_DIR=/anon_user/pmax2023/out/23.het_DAPC_IBD
 MAP_DIR=${BASE_DIR}/map
 HET_DIR=${BASE_DIR}/het
 DAPC_DIR=${BASE_DIR}/DAPC

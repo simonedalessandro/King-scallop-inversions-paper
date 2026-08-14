@@ -30,8 +30,8 @@ module load plink/1.90b7.2
 # Path configuration
 # ------------------------------------------------------------------------------
 
-INPUT=/simone/pmax2023/out/10.angsd/Pmax_168_merged_chr
-OUTPUT=/simone/pmax2023/out/10.angsd/Pmax_168_merged_chr
+INPUT=/anon_user/pmax2023/out/10.angsd/Pmax_168_merged_chr
+OUTPUT=/anon_user/pmax2023/out/10.angsd/Pmax_168_merged_chr
 
 # ------------------------------------------------------------------------------
 # Compute heterozygosity and missingness

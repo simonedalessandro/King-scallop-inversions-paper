@@ -38,13 +38,13 @@ module load pigz/2.3.3
 # ------------------------------------------------------------------------------
 
 # Directory containing raw paired-end FASTQ files
-TARGET_DIR=/simone/pmax2023/raw
+TARGET_DIR=/anon_user/pmax2023/raw
 
 # Sample sheet: tab-separated, three columns — sample_name  R1_file  R2_file
-SAMPLE_SHEET="/simone/pmax2023/out/file_lists/00.trimgalore.sample.list.txt"
+SAMPLE_SHEET="/anon_user/pmax2023/out/file_lists/00.trimgalore.sample.list.txt"
 
 # Output directory for trimmed reads and FastQC reports
-OUTPUT_DIR=/simone/pmax2023/out/02cutadapt
+OUTPUT_DIR=/anon_user/pmax2023/out/02cutadapt
 
 # ------------------------------------------------------------------------------
 # Parse sample information for this array task

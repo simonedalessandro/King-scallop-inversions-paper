@@ -31,8 +31,8 @@ module load samtools/1.9
 # Path configuration
 # ------------------------------------------------------------------------------
 
-TARGET_DIR=/simone/pmax2023/out/06rmdup_bams/06x
-OUTPUT_DIR=/simone/pmax2023/out/06rmdup_bams/06x/flagstat
+TARGET_DIR=/anon_user/pmax2023/out/06rmdup_bams/06x
+OUTPUT_DIR=/anon_user/pmax2023/out/06rmdup_bams/06x/flagstat
 
 mkdir -p "${OUTPUT_DIR}"
 

@@ -52,11 +52,11 @@ ANGSD=/software/angsd/angsd/angsd
 # Update BAM_LIST between passes:
 #   Pass 1: angsd_bams_168.txt  (full cohort)
 #   Pass 2: angsd_bams_160.txt  (8 related individuals removed)
-BAM_LIST=/simone/pmax2023/out/file_lists/angsd_bams_160.txt
+BAM_LIST=/anon_user/pmax2023/out/file_lists/angsd_bams_160.txt
 
-OUTPUT_DIR=/simone/pmax2023/out/10.angsd
-REFERENCE=/simone/reference/Pmax/GCA_902652985.1_xPecMax1.1_genomic.fna
-SCAFF_LIST=/simone/pmax2023/out/file_lists/scaff_IDs.txt
+OUTPUT_DIR=/anon_user/pmax2023/out/10.angsd
+REFERENCE=/anon_user/reference/Pmax/GCA_902652985.1_xPecMax1.1_genomic.fna
+SCAFF_LIST=/anon_user/pmax2023/out/file_lists/scaff_IDs.txt
 
 # ------------------------------------------------------------------------------
 # Parse chromosome for this array task

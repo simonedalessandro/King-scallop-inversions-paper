@@ -37,10 +37,10 @@ module load plink/1.9
 # Path configuration
 # ------------------------------------------------------------------------------
 
-VCF_DIR=/simone/pmax2023/out/20.lostruct/vcf
-INV_DIR=/simone/pmax2023/out/20.lostruct/inversions
-NO_INV_DIR=/simone/pmax2023/out/22.no_inversion
-SNP_DIR=/simone/pmax2023/out/file_lists
+VCF_DIR=/anon_user/pmax2023/out/20.lostruct/vcf
+INV_DIR=/anon_user/pmax2023/out/20.lostruct/inversions
+NO_INV_DIR=/anon_user/pmax2023/out/22.no_inversion
+SNP_DIR=/anon_user/pmax2023/out/file_lists
 
 mkdir -p "${NO_INV_DIR}"
 

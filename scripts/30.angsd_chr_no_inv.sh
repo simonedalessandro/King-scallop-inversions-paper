@@ -13,9 +13,9 @@
 #
 # Usage:        qsub 30.angsd_chr_no_inv.sh <bam_list>
 #                 Pass 1: qsub 30.angsd_chr_no_inv.sh \
-#                           /simone/pmax2023/out/file_lists/angsd_bams_160.txt
+#                           /anon_user/pmax2023/out/file_lists/angsd_bams_160.txt
 #                 Pass 2: qsub 30.angsd_chr_no_inv.sh \
-#                           /simone/pmax2023/out/file_lists/angsd_bams_158.txt
+#                           /anon_user/pmax2023/out/file_lists/angsd_bams_158.txt
 #
 # Input:        BAM list (passed as $1)
 #               Pmax_no_inversion.snplist — inversion-free SNP position list
@@ -55,7 +55,7 @@ module load java
 # Command-line argument: BAM list
 # ------------------------------------------------------------------------------
 
-BAM_LIST="${1:?ERROR: provide a BAM list, e.g. qsub 30.angsd_chr_no_inv.sh /simone/pmax2023/out/file_lists/angsd_bams_160.txt}"
+BAM_LIST="${1:?ERROR: provide a BAM list, e.g. qsub 30.angsd_chr_no_inv.sh /anon_user/pmax2023/out/file_lists/angsd_bams_160.txt}"
 
 if [ ! -f "${BAM_LIST}" ]; then
     echo "ERROR: BAM list not found: ${BAM_LIST}" >&2
@@ -66,12 +66,12 @@ fi
 # Path configuration
 # ------------------------------------------------------------------------------
 
-ANGSD=/simone/pmax2023/software/angsd-v0.940/angsd
+ANGSD=/anon_user/pmax2023/software/angsd-v0.940/angsd
 
-OUT_DIR=/simone/pmax2023/out/22.no_inversion
-REFERENCE=/simone/reference/Pmax/GCA_902652985.1_xPecMax1.1_genomic.fna
-SCAFF_LIST=/simone/pmax2023/out/file_lists/scaff_IDs.txt
-SITES=/simone/pmax2023/out/file_lists/Pmax_no_inversion.snplist
+OUT_DIR=/anon_user/pmax2023/out/22.no_inversion
+REFERENCE=/anon_user/reference/Pmax/GCA_902652985.1_xPecMax1.1_genomic.fna
+SCAFF_LIST=/anon_user/pmax2023/out/file_lists/scaff_IDs.txt
+SITES=/anon_user/pmax2023/out/file_lists/Pmax_no_inversion.snplist
 
 mkdir -p "${OUT_DIR}"
 

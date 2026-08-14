@@ -49,7 +49,7 @@ module load R/4.5.0
 # Path configuration
 # ------------------------------------------------------------------------------
 
-BASE=/simone/pmax2023
+BASE=/anon_user/pmax2023
 RAW_DIR=${BASE}/raw/outgroup                       
 INV_DIR=${BASE}/out/20.lostruct/inversions          # inversion SNP dataset
 OUT_DIR=${BASE}/out/30.ancestral/outgroup           
@@ -368,7 +368,7 @@ rm -f "${inv_file}"
 
 # Per-karyotype individual lists (AA / BB homozygotes), used by the R viz, are
 # derived from the inversion-clustering output
-# (/simone/pmax2023/out/20.lostruct/inversions/local_pca/<INV>/)
+# (/anon_user/pmax2023/out/20.lostruct/inversions/local_pca/<INV>/)
 # e.g. for LGC15:
 #   awk 'NR>1{$1=""; gsub("\"",""); print}' AA.list.txt | sed 's/^[ \t]*//' \
 #       > LGC15_AA_individuals.txt

@@ -38,7 +38,7 @@ module load R/4.5
 # Path configuration   
 # ------------------------------------------------------------------------------
 
-BASE=/simone/pmax2023/out
+BASE=/anon_user/pmax2023/out
 GO="${BASE}/40.GO"
 ANN="${GO}/AnnotationForge"
 

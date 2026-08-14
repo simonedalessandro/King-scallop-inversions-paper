@@ -26,7 +26,7 @@
 # Path configuration
 # ------------------------------------------------------------------------------
 
-GO=/simone/pmax2023/out/40.GO          
+GO=/anon_user/pmax2023/out/40.GO          
 
 mkdir -p "${GO}/AnnotationForge"
 cd "${GO}"

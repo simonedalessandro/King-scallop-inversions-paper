@@ -24,10 +24,10 @@ library(dplyr)
 library(purrr)
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
-INV_DIR     <- "/simone/pmax2023/out/20.lostruct/inversions/"
-SAMPLE_FILE <- "/simone/pmax2023/out/file_lists/sample.ID.txt"
-OUT_DIR     <- "/simone/pmax2023/out/20.lostruct/inversions/local_pca/"
-FIG_DIR     <- "/simone/pmax2023/out/20.lostruct/inversions/figures/"
+INV_DIR     <- "/anon_user/pmax2023/out/20.lostruct/inversions/"
+SAMPLE_FILE <- "/anon_user/pmax2023/out/file_lists/sample.ID.txt"
+OUT_DIR     <- "/anon_user/pmax2023/out/20.lostruct/inversions/local_pca/"
+FIG_DIR     <- "/anon_user/pmax2023/out/20.lostruct/inversions/figures/"
 
 dir.create(OUT_DIR, showWarnings = FALSE, recursive = TRUE)
 dir.create(FIG_DIR, showWarnings = FALSE, recursive = TRUE)

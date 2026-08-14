@@ -46,11 +46,11 @@ module load bcftools/1.20
 # Path configuration
 # ------------------------------------------------------------------------------
 
-PLINK_DIR=/simone/pmax2023/out/10.angsd/Pmax_160
-LD_DIR=/simone/pmax2023/out/21.MDS_pca_het_LD/LD
+PLINK_DIR=/anon_user/pmax2023/out/10.angsd/Pmax_160
+LD_DIR=/anon_user/pmax2023/out/21.MDS_pca_het_LD/LD
 TMP_DIR=${LD_DIR}/tmp
-MAPFILE=/simone/pmax2023/out/file_lists/chrom_inversion_list.txt
-REHEADER=/simone/pmax2023/out/file_lists/bcftools_reheader.txt
+MAPFILE=/anon_user/pmax2023/out/file_lists/chrom_inversion_list.txt
+REHEADER=/anon_user/pmax2023/out/file_lists/bcftools_reheader.txt
 
 mkdir -p "${LD_DIR}" "${TMP_DIR}"
 

@@ -44,8 +44,8 @@ options(scipen = 999)
 # Path configuration
 # ------------------------------------------------------------------------------
 
-data_path   <- "/simone/pmax2023/out/07coverage"
-output_file <- "/simone/pmax2023/out/file_lists/proportion_to_downsample_10x.txt"
+data_path   <- "/anon_user/pmax2023/out/07coverage"
+output_file <- "/anon_user/pmax2023/out/file_lists/proportion_to_downsample_10x.txt"
 
 # ------------------------------------------------------------------------------
 # Load samtools coverage output

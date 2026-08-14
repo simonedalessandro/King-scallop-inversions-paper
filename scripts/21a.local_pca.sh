@@ -31,8 +31,8 @@ module load plink/1.9
 # Path configuration
 # ------------------------------------------------------------------------------
 
-VCF=/simone/pmax2023/out/20.lostruct/Pmax_160_merged_sorted_chr.vcf
-OUT_DIR=/simone/pmax2023/out/20.lostruct/inversions
+VCF=/anon_user/pmax2023/out/20.lostruct/Pmax_160_merged_sorted_chr.vcf
+OUT_DIR=/anon_user/pmax2023/out/20.lostruct/inversions
 PLINK_DIR=${OUT_DIR}/plink
 
 mkdir -p "${OUT_DIR}" "${PLINK_DIR}"

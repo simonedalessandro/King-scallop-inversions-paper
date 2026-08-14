@@ -33,7 +33,7 @@ module load plink/1.90b7.2
 # Path configuration
 # ------------------------------------------------------------------------------
 
-ANGSD_DIR=/simone/pmax2023/out/10.angsd
+ANGSD_DIR=/anon_user/pmax2023/out/10.angsd
 
 cd "${ANGSD_DIR}"
 

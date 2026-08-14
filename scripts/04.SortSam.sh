@@ -31,8 +31,8 @@ module load java
 # Path configuration
 # ------------------------------------------------------------------------------
 
-TARGET_DIR=/simone/pmax2023/out/03mapped_bams
-OUTPUT_DIR=/simone/pmax2023/out/04sorted_bams
+TARGET_DIR=/anon_user/pmax2023/out/03mapped_bams
+OUTPUT_DIR=/anon_user/pmax2023/out/04sorted_bams
 
 # Scratch space for Picard temporary files
 SCRATCH=/scratch/sdaless

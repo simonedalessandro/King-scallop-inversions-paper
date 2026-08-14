@@ -53,7 +53,7 @@ library(data.table)
 library(ggrastr)
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
-base_dir <- "/simone/pmax2023/out/20.lostruct/inversions/LGC18.01_02"
+base_dir <- "/anon_user/pmax2023/out/20.lostruct/inversions/LGC18.01_02"
 LGC      <- "LGC18.01_02"
 
 message("==> Processing: ", LGC)

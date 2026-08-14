@@ -44,9 +44,9 @@ module load anaconda
 # Path configuration
 # ------------------------------------------------------------------------------
 
-IN_DIR=/simone/pmax2023/out/22.no_inversions
-PRUNE_DIR=/simone/pmax2023/out/22.no_inversions/pruned
-OUT_DIR=/simone/pmax2023/out/23.het_DAPC_IBD
+IN_DIR=/anon_user/pmax2023/out/22.no_inversions
+PRUNE_DIR=/anon_user/pmax2023/out/22.no_inversions/pruned
+OUT_DIR=/anon_user/pmax2023/out/23.het_DAPC_IBD
 
 
 NGSRELATE=/software/ngsRelate/ngsRelate

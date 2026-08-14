@@ -42,7 +42,7 @@ module load BEDTools/2.31.1
 # Path configuration
 # ------------------------------------------------------------------------------
 
-BASE=/simone/pmax2023/out              
+BASE=/anon_user/pmax2023/out              
 GO="${BASE}/40.GO"
 ANN="${GO}/AnnotationForge"
 MAPFILE="${BASE}/file_lists/chrom_inversion_list.txt"

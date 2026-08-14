@@ -31,7 +31,7 @@
 # Path / parameter configuration
 # ------------------------------------------------------------------------------
 
-BASE_DIR=/simone/pmax2023/out/23.het_DAPC_IBD
+BASE_DIR=/anon_user/pmax2023/out/23.het_DAPC_IBD
 OUT_DIR=${BASE_DIR}/divmigrate
 VCF_FILE=${BASE_DIR}/Pmax_no_inv_pruned_filtered.vcf
 ID_POP=${BASE_DIR}/ID_pop.txt

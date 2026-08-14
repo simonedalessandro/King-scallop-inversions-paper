@@ -28,7 +28,7 @@ module load samtools/1.10
 # ------------------------------------------------------------------------------
 # Paths / parameters
 # ------------------------------------------------------------------------------
-BAM_DIR=/simone/pmax2023/out/30.ancestral/outgroup/bam
+BAM_DIR=/anon_user/pmax2023/out/30.ancestral/outgroup/bam
 THREADS=4
 
 # Pick this task's BAM
