@@ -39,7 +39,7 @@ METRICS_DIR=/anon_user/pmax2023/out/06rmdup_bams/metrics
 STATS_DIR=/anon_user/pmax2023/out/06rmdup_bams/stats
  
 # Job-specific scratch directory to avoid collisions between array tasks
-SCRATCH=/scratch/sdaless/picard_tmp/${JOB_ID}_${SGE_TASK_ID}
+SCRATCH=/scratch/picard_tmp/${JOB_ID}_${SGE_TASK_ID}
  
 PICARD=/software/picard/picard.jar
  
