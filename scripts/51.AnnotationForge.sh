@@ -46,7 +46,7 @@ GENE2GO="${ANN}/gene2go.tsv"
 QC_INV="${ANN}/LGC08.02_GO.genes.txt"   # any per-inversion GO gene list for QC
 OUTDIR="${GO}"                          
 
-RLIB=/local/sdaless/R/4.5
+RLIB=/local/R/4.5
 
 mkdir -p "${OUTDIR}" "${RLIB}"
 
