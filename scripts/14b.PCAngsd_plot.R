@@ -1,9 +1,14 @@
 # ==============================================================================
-# Script:       14b.pcangsd.R
+# Script:       14b.PCAngsd_plot.R
 # Description:  Visualise population structure from PCAngsd covariance matrices.
+#                 - Genome-wide PCA of LD-pruned SNPs (Fig. S3)
+#                 - Per-chromosome PCAs of unpruned SNPs (Fig. 1B), with variance
+#                   explained per axis and chromosomes carrying putative
+#                   inversions marked with an asterisk
 #
-# Input:        Genome-wide .cov file and per-chromosome .cov files from 14a.pcangsd.sh;
-#                    pop_info_160.txt sample metadata table
+# Input:        Genome-wide (LD-pruned) .cov file and per-chromosome .cov files
+#               from 14a.PCAngsd.sh; pop_info_160.txt sample metadata table
+#               (same sample order as the Beagle files)
 # ==============================================================================
 
 library(data.table)
@@ -13,12 +18,15 @@ library(patchwork)
 library(cowplot)
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
-COV_GENOME <- "PCAngsd/Pmax_160_merged_chr.cov"
+COV_GENOME <- "PCAngsd/Pmax_160_LD_pruned.cov"
 COV_DIR    <- "PCAngsd/chr/"
 POP_FILE   <- "PCAngsd/pop_info_160.txt"
 OUT_DIR    <- "Figures/"
 
 dir.create(OUT_DIR, showWarnings = FALSE, recursive = TRUE)
+
+# Chromosomes carrying putative inversions (Table 1)
+inv_chr <- c(2, 8, 9, 11, 13, 15, 17, 18, 19)
 
 # ── Colour palette and legend order ───────────────────────────────────────────
 col_palette  <- c("#0477BF", "#38E0F2", "#29A655", "#7FBF50",
@@ -56,6 +64,7 @@ pop_info <- read_delim(POP_FILE, delim = "\t",
 cat("\n[Genome-wide PCA]\n")
 
 cov <- as.matrix(read.table(COV_GENOME))
+stopifnot(nrow(cov) == nrow(pop_info))   # sample order must match the Beagle file
 e   <- eigen(cov)
 
 pca_sum     <- sum(e$values)
@@ -87,8 +96,8 @@ print(p1 + p2 + plot_layout(guides = "collect"))
 
 # Save genome-wide PCA
 genome_plot <- p1 + p2 + plot_layout(guides = "collect")
-ggsave(file.path(OUT_DIR, "Pmax_160_pca.pdf"), genome_plot, width = 12, height = 6, dpi = 300)
-cat("Saved:", file.path(OUT_DIR, "Pmax_160_pca.pdf"), "\n")
+ggsave(file.path(OUT_DIR, "Pmax_160_LDpruned_pca.pdf"), genome_plot, width = 12, height = 6, dpi = 300)
+cat("Saved:", file.path(OUT_DIR, "Pmax_160_LDpruned_pca.pdf"), "\n")
 
 # ==============================================================================
 # PART 2: Per-chromosome PCA panel
@@ -107,7 +116,7 @@ chr_theme <- theme_cowplot() +
     axis.title       = element_blank(),
     axis.text        = element_blank(),
     axis.ticks       = element_blank(),
-    strip.text.x     = element_text(size = 20, face = "bold"),
+    strip.text.x     = element_text(size = 16, face = "bold"),
     panel.border     = element_rect(colour = "black", fill = NA, linewidth = 1)
   )
 
@@ -118,11 +127,13 @@ for (i in seq_along(cov_files)) {
 
   cov_chr <- as.matrix(fread(cov_files[[i]], header = FALSE))
   e_chr   <- eigen(cov_chr)
+  ve_chr  <- round(e_chr$values[1:2] / sum(e_chr$values) * 100, 1)
 
   pca_chr <- as.data.frame(e_chr$vectors[, 1:2]) %>%
     setNames(c("PC1", "PC2")) %>%
     bind_cols(pop_info) %>%
-    mutate(chromosome = paste0("chr ", i))
+    mutate(chromosome = paste0("chr ", i, if (i %in% inv_chr) "*" else "",
+                               " (", ve_chr[1], "%, ", ve_chr[2], "%)"))
 
   chr_plots[[i]] <- ggplot(pca_chr,
       aes(x = PC1, y = PC2,
