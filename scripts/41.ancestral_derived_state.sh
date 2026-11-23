@@ -248,4 +248,3 @@ cat("Saved: inversion_karyotype_frequency.png/.pdf\n")
 cat("\nDone.\n")
 
 EOF
-echo "Wrote $(wc -l < /mnt/user-data/outputs/41_ancestral_derived_state.sh) lines"
