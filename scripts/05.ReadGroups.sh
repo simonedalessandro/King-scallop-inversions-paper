@@ -34,7 +34,7 @@ INPUT_DIR=/anon_user/pmax2023/out/04sorted_bams
 OUTPUT_DIR=/anon_user/pmax2023/out/05group_bams
 
 # Scratch space for Picard temporary files
-SCRATCH=/scratch/sdaless
+SCRATCH=/scratch/anon_user
 
 # ------------------------------------------------------------------------------
 # Parse sample for this array task
