@@ -48,7 +48,7 @@ ALL_GO_GENES="${ANN}/all_GO.genes.txt"
 OUTDIR="${GO}/enrichGO"
 
 # User R library holding org.Pmaximus.eg.db (edit to match your account)
-RLIB=/local/sdaless/R/4.5
+RLIB=/local/R/4.5
 
 mkdir -p "${OUTDIR}"
 
